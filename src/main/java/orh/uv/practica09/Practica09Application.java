@@ -1,4 +1,4 @@
-package orh.uv.Practica09;
+package orh.uv.practica09;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
