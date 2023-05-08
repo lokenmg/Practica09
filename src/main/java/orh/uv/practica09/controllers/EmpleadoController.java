@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import orh.uv.practica09.model.DAOEmpleado;
 import orh.uv.practica09.model.Empleado;
+import orh.uv.practica09.model.EmpleadoDTO;
 
 /**
  *
@@ -46,7 +47,8 @@ public class EmpleadoController {
     }
 
     @PostMapping("/empleado")
-    public ResponseEntity<Empleado> addEmpleado(@RequestBody Empleado empleado) {
+    public ResponseEntity<Empleado> addEmpleado(@RequestBody EmpleadoDTO empleadoDTO) {
+        Empleado empleado = new Empleado(empleadoDTO);
         try {
             Empleado eMpleado = empleadoRepository.save(empleado);
             return new ResponseEntity<>(eMpleado, HttpStatus.CREATED);
@@ -66,7 +68,8 @@ public class EmpleadoController {
     }
 
     @PutMapping("/empleado/{id}")
-    public ResponseEntity<Empleado> updateEmpleado(@PathVariable("id") long id, @RequestBody Empleado empleado) {
+    public ResponseEntity<Empleado> updateEmpleado(@PathVariable("id") long id, @RequestBody EmpleadoDTO empleadoDTO) {
+        Empleado empleado = new Empleado(empleadoDTO);  
         Optional<Empleado> empleadoData = empleadoRepository.findById(id);
 
         if (empleadoData.isPresent()) {

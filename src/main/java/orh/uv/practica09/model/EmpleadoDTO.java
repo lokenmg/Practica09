@@ -4,40 +4,16 @@
  */
 package orh.uv.practica09.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 /**
  *
  * @author loken
  */
-@Entity(name ="empleado")
-public class Empleado {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name="id")
-    private long id;
-    
-    @Column(name = "nombre")
-    private String nombre;
-    
-    @Column(name = "telefono")
-    private String telefono;
-    
-    @Column(name = "direccion")
-    private String direccion;
 
-    public Empleado(EmpleadoDTO emp) {
-        this.id = emp.getId();
-        this.nombre = emp.getNombre();
-        this.telefono = emp.getTelefono();
-        this.direccion = emp.getDireccion();
-    }
-    
-    
+public class EmpleadoDTO {
+    private long id;
+    private String nombre;
+    private String telefono;
+    private String direccion;
 
     public long getId() {
         return id;
@@ -70,5 +46,4 @@ public class Empleado {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    
 }
